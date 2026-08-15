@@ -12,7 +12,7 @@ output "quicksight_data_sources_aws_account_id" {
 }
 output "quicksight_data_sources_credentials" {
   description = "Map of credentials values across all quicksight_data_sources, keyed the same as var.quicksight_data_sources"
-  value       = { for k, v in aws_quicksight_data_source.quicksight_data_sources : k => v.credentials if v.credentials != null && length(v.credentials) > 0 }
+  value       = { for k, v in aws_quicksight_data_source.quicksight_data_sources : k => one(v.credentials) if v.credentials != null && length(v.credentials) > 0 }
   sensitive   = true
 }
 output "quicksight_data_sources_data_source_id" {
@@ -25,7 +25,7 @@ output "quicksight_data_sources_name" {
 }
 output "quicksight_data_sources_parameters" {
   description = "Map of parameters values across all quicksight_data_sources, keyed the same as var.quicksight_data_sources"
-  value       = { for k, v in aws_quicksight_data_source.quicksight_data_sources : k => v.parameters if v.parameters != null && length(v.parameters) > 0 }
+  value       = { for k, v in aws_quicksight_data_source.quicksight_data_sources : k => one(v.parameters) if v.parameters != null && length(v.parameters) > 0 }
 }
 output "quicksight_data_sources_permission" {
   description = "Map of permission values across all quicksight_data_sources, keyed the same as var.quicksight_data_sources"
@@ -37,7 +37,7 @@ output "quicksight_data_sources_region" {
 }
 output "quicksight_data_sources_ssl_properties" {
   description = "Map of ssl_properties values across all quicksight_data_sources, keyed the same as var.quicksight_data_sources"
-  value       = { for k, v in aws_quicksight_data_source.quicksight_data_sources : k => v.ssl_properties if v.ssl_properties != null && length(v.ssl_properties) > 0 }
+  value       = { for k, v in aws_quicksight_data_source.quicksight_data_sources : k => one(v.ssl_properties) if v.ssl_properties != null && length(v.ssl_properties) > 0 }
 }
 output "quicksight_data_sources_tags" {
   description = "Map of tags values across all quicksight_data_sources, keyed the same as var.quicksight_data_sources"
@@ -53,6 +53,6 @@ output "quicksight_data_sources_type" {
 }
 output "quicksight_data_sources_vpc_connection_properties" {
   description = "Map of vpc_connection_properties values across all quicksight_data_sources, keyed the same as var.quicksight_data_sources"
-  value       = { for k, v in aws_quicksight_data_source.quicksight_data_sources : k => v.vpc_connection_properties if v.vpc_connection_properties != null && length(v.vpc_connection_properties) > 0 }
+  value       = { for k, v in aws_quicksight_data_source.quicksight_data_sources : k => one(v.vpc_connection_properties) if v.vpc_connection_properties != null && length(v.vpc_connection_properties) > 0 }
 }
 
